@@ -30,12 +30,12 @@ public class Matrix
         //putting the files in.
         Input = new BufferedReader(new FileReader(args[0]));
         Output = new BufferedWriter(new FileWriter(args[1]));
-
-    while((counter = Integer.parseInt(Input.readLine())) !=0) {
+try {
+    while ((counter = Integer.parseInt(Input.readLine())) != 0) {
         MatrixMethods matrix = new MatrixMethods(counter);
         String Row; // needs to be outside of for loop
         double Determinant = 0;
-        for(int i = 0; i < counter; i++){
+        for (int i = 0; i < counter; i++) {
 
             Row = Input.readLine(); //error to handle IO.exception
             matrix.setMatrix(i); //method from matrixmethods.java
@@ -46,19 +46,20 @@ public class Matrix
 
         //Using the Determinant method in MatrixMethod and placing that in output file
         Determinant = matrix.Determinant();
-            Output.write("det = " + Determinant); //error to handle IO.exception
-         //Using the Inverse method in MatrixMethods and placing that in the output file
+        Output.write("det = " + Determinant); //error to handle IO.exception
+        //Using the Inverse method in MatrixMethods and placing that in the output file
         MatrixMethods matrixInv = matrix.Inverse();
         Output.write("Minv =  "); //error to handle IO.exception
-                for(int j = 0; j < counter; i++)
-                {
-                    Output.write(matrixInv.getMatrix(j));
-                }//end inverse for loop
+        for (int j = 0; j < counter; i++) {
+            Output.write(matrixInv.getMatrix(j));
+        }//end inverse for loop
 
 
     }//end while loop
 
-
+} catch(IOException e) {
+    System.out.print("error");
+    }
         //Will need to implement try/catch for IOException
 
 
