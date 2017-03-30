@@ -16,7 +16,7 @@ public class MatrixMethods {
 
 
 private String ConvertToString(double[] ArrayAsDouble) {
-    String ArrayAsString;
+    String ArrayAsString = null;
     for(int i = 0; i <  ArrayAsDouble.length; i ++) {
         ArrayAsString = ArrayAsString + ArrayAsDouble[i];
         int count = ArrayAsDouble.length;
@@ -54,18 +54,27 @@ private String ConvertToString(double[] ArrayAsDouble) {
 
 
     public  MatrixMethods Inverse(){
-        return matrix;
+        MatrixMethods matrixInv = new MatrixMethods (GenSize);
+        for(int i = 0; i< GenSize / 2 ; i++){
+            for(int j = 0; j< GenSize / 2 ; j++) {
+
+                double temp = matrix[i][j];
+                matrix[i][j] = matrix[GenSize - i - 1][GenSize - j - 1];
+                matrix[GenSize - i - 1][GenSize - j - 1] = temp;
+            }
+        }
+        return matrixInv;
     }
 
     public double Determinant(){
-        double determinant;
+        double determinant = 0.0;
         MatrixMethods SmallMat = new MatrixMethods(GenSize - 1);
         int row = 0;
         int column = 0;
         for(int i = 0; i < GenSize; i++)
         {
             
-           //making the array smaller for determinant opperations 
+           //making the array smaller for determinant operations
             for(int j = 0; j < GenSize; j++)//for loop 1
             {
                 if (j == 0) {
@@ -74,7 +83,7 @@ private String ConvertToString(double[] ArrayAsDouble) {
                         if (k == i) {
                             SmallMat.matrix[row][column] = matrix[i][k];
                             column = column + 1;
-                        }//end k if 
+                        }//end k if
                     }// end for loop2
                     row++;
                 } //end i if 
