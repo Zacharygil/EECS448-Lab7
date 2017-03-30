@@ -58,7 +58,36 @@ private String ConvertToString(double[] ArrayAsDouble) {
     }
 
     public double Determinant(){
-        return double;
+        double determinant;
+        MatrixMethods SmallMat = new MatrixMethods(GenSize - 1);
+        int row = 0;
+        int column = 0;
+        for(int i = 0; i < GenSize; i++)
+        {
+            
+           //making the array smaller for determinant opperations 
+            for(int j = 0; j < GenSize; j++)//for loop 1
+            {
+                if (j == 0) {
+                    for (int k = 0; k < GenSize; k++)//for loop2
+                    {
+                        if (k == i) {
+                            SmallMat.matrix[row][column] = matrix[i][k];
+                            column = column + 1;
+                        }//end k if 
+                    }// end for loop2
+                    row++;
+                } //end i if 
+            }//end for loop 1
+            //-- ending the shrinking of the array
+            
+            
+            determinant = determinant + Math.pow(-1.0, (double)i) * matrix[0][i] * SmallMat.matrix[row][column];
+        }
+
+
+
+        return determinant;
     }
 
 
