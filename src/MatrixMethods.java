@@ -13,6 +13,32 @@ public class MatrixMethods {
         matrix = new double[GenSize][GenSize];
 
     }
+
+    
+private String ConvertToString(double[] ArrayAsDouble) {
+    String ArrayAsString;
+    for(int i = 0; i <  ArrayAsDouble.length; i ++) {
+        ArrayAsString = ArrayAsString + ArrayAsDouble[i];
+        int count = ArrayAsDouble.length;
+        if(i <  (count - 1)) {
+            ArrayAsString = ArrayAsString + " ";
+        }//end if
+    }// end for loop
+    return ArrayAsString;
+}//end convert to strimg
+    private double[] ConvertToDouble(String ArrayAsString) {
+        int place = 0;
+        double[] ArrayAsDouble = new double[GenSize];
+        String[] EndingStringAmounts = ArrayAsString.split(" ");//using split
+        for(String CurrentstringAmount : EndingStringAmounts)
+        {
+            ArrayAsDouble[place] = Double.parseDouble(CurrentstringAmount);
+            place = place + 1;
+        } // end for loop
+        return ArrayAsDouble;
+    }  //end ConvertToDouble
+
+
 //getters setters
 
     public void setMatrix(int row)
