@@ -14,7 +14,7 @@ public class MatrixMethods {
 
     }
 
-    
+
 private String ConvertToString(double[] ArrayAsDouble) {
     String ArrayAsString;
     for(int i = 0; i <  ArrayAsDouble.length; i ++) {
@@ -41,14 +41,14 @@ private String ConvertToString(double[] ArrayAsDouble) {
 
 //getters setters
 
-    public void setMatrix(int row)
-    {
-
+    public void setMatrix(int row, String strng) {
+       int place = row;
+        matrix[place] = ConvertToDouble(strng);
     }
 
-    public void getMatrix(int row)
-    {
-
+    public String getMatrix(int row) {
+        String strng = ConvertToString(matrix[row]);
+        return strng;
     }
 
 
