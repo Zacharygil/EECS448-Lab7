@@ -14,6 +14,14 @@ public class MatrixMethods {
 
     }
 
+    public  MatrixMethods Inverse(){
+        return matrix;
+    }
+
+    public MatrixMethods Determinant(){
+        return int;
+    }
+
 
 
 }
