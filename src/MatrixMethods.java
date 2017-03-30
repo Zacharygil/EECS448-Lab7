@@ -5,15 +5,11 @@ public class MatrixMethods {
     //Globals
     double [][] matrix;
     int GenSize = 0;
-
-
     //Make the matrix
     public MatrixMethods(int InputSize){
         GenSize = InputSize;
         matrix = new double[GenSize][GenSize];
-
     }
-
 
 private String ConvertToString(double[] ArrayAsDouble) {
     String ArrayAsString = null;
@@ -30,17 +26,14 @@ private String ConvertToString(double[] ArrayAsDouble) {
         int place = 0;
         double[] ArrayAsDouble = new double[GenSize];
         String[] EndingStringAmounts = ArrayAsString.split(" ");//using split
-        for(String CurrentstringAmount : EndingStringAmounts)
+        for(String CurrentstringAmount : EndingStringAmounts)//parsing through the data
         {
             ArrayAsDouble[place] = Double.parseDouble(CurrentstringAmount);
             place = place + 1;
         } // end for loop
         return ArrayAsDouble;
     }  //end ConvertToDouble
-
-
-//getters setters
-
+//getters setters ----------------
     public void setMatrix(int row, String strng) {
        int place = row;
         matrix[place] = ConvertToDouble(strng);
@@ -50,9 +43,6 @@ private String ConvertToString(double[] ArrayAsDouble) {
         String strng = ConvertToString(matrix[row]);
         return strng;
     }
-
-
-
     public  MatrixMethods Inverse(){
         MatrixMethods matrixInv = new MatrixMethods (GenSize);
         for(int i = 0; i< GenSize / 2 ; i++){
@@ -65,7 +55,7 @@ private String ConvertToString(double[] ArrayAsDouble) {
         }
         return matrixInv;
     }
-
+//Determinant -----------
     public double Determinant(){
         double determinant = 0.0;
         MatrixMethods SmallMat = new MatrixMethods(GenSize - 1);
@@ -89,17 +79,9 @@ private String ConvertToString(double[] ArrayAsDouble) {
                 } //end i if 
             }//end for loop 1
             //-- ending the shrinking of the array
-            
-            
+
             determinant = determinant + Math.pow(-1.0, (double)i) * matrix[0][i] * SmallMat.matrix[row][column];
         }
-
-
-
         return determinant;
     }
-
-
-
-
 }
