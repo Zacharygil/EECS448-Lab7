@@ -13,6 +13,19 @@ public class MatrixMethods {
         matrix = new double[GenSize][GenSize];
 
     }
+//getters setters
+
+    public void setMatrix(int row)
+    {
+
+    }
+
+    public void getMatrix(int row)
+    {
+
+    }
+
+
 
     public  MatrixMethods Inverse(){
         return matrix;
@@ -21,6 +34,7 @@ public class MatrixMethods {
     public MatrixMethods Determinant(){
         return int;
     }
+
 
 
 
