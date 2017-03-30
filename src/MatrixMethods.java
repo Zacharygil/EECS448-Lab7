@@ -31,8 +31,8 @@ public class MatrixMethods {
         return matrix;
     }
 
-    public MatrixMethods Determinant(){
-        return int;
+    public double Determinant(){
+        return double;
     }
 
 
