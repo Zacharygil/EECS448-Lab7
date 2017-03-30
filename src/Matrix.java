@@ -4,7 +4,6 @@
 
 
 import java.io.IOException;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.FileReader;
 import java.io.BufferedReader;
@@ -12,24 +11,25 @@ import java.io.BufferedWriter;
 
 public class Matrix
 {
-
     public static void main(String[] args)
-
     {
-
        //file in - file out initialization
         BufferedReader Input = null;
         BufferedWriter Output = null;
         // variable for parsing
         int counter;
-
         //simple check for input arguments
         if(args.length< 2){
             System.out.println("Inadequate amount of arguments");
         }
         //putting the files in.
-        Input = new BufferedReader(new FileReader(args[0]));
-        Output = new BufferedWriter(new FileWriter(args[1]));
+        try {
+            Input = new BufferedReader(new FileReader(args[0]));
+            Output = new BufferedWriter(new FileWriter(args[1]));
+        }//end try
+        catch (IOException e){
+            System.out.print("error");
+        }//end catch
 try {
     while ((counter = Integer.parseInt(Input.readLine())) != 0) {
         MatrixMethods matrix = new MatrixMethods(counter);
@@ -38,7 +38,7 @@ try {
         for (int i = 0; i < counter; i++) {
 
             Row = Input.readLine(); //error to handle IO.exception
-            matrix.setMatrix(i); //method from matrixmethods.java
+            matrix.setMatrix(i, Row); //method from matrixmethods.java
             // setMatrix not made yet but asssumed
             Output.write(Row);//IoException error
         } //end for loop
@@ -50,16 +50,17 @@ try {
         //Using the Inverse method in MatrixMethods and placing that in the output file
         MatrixMethods matrixInv = matrix.Inverse();
         Output.write("Minv =  "); //error to handle IO.exception
-        for (int j = 0; j < counter; i++) {
+        for (int j = 0; j < counter; j++) {
             Output.write(matrixInv.getMatrix(j));
         }//end inverse for loop
 
 
     }//end while loop
 
-} catch(IOException e) {
+}//end try
+catch(IOException e) {
     System.out.print("error");
-    }
+    }//end IOException Catch
         //Will need to implement try/catch for IOException
 
 
